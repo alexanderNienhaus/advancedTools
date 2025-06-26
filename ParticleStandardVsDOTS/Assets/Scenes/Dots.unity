@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textField: {fileID: 340671426}
   interval: 0.5
+  doLog: 1
 --- !u!4 &1182575461
 Transform:
   m_ObjectHideFlags: 0

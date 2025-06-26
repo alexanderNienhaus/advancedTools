@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 820.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 332}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 85
+  controlID: 64
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 117
+  controlID: 118
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 118
+  controlID: 119
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
   - {fileID: 15}
   - {fileID: 17}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1143,9 +1143,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73.6
+    y: 79.200005
     width: 836.6
-    height: 287.8
+    height: 400.4
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1223,7 +1223,7 @@ MonoBehaviour:
                 m_Text: Overview
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Overview\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1239,7 +1239,7 @@ MonoBehaviour:
                 m_Text: Total
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Total\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1255,7 +1255,7 @@ MonoBehaviour:
                 m_Text: Self
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Self\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1271,7 +1271,7 @@ MonoBehaviour:
                 m_Text: Calls
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Calls\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1287,7 +1287,7 @@ MonoBehaviour:
                 m_Text: GC Alloc
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "GC Alloc\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1303,7 +1303,7 @@ MonoBehaviour:
                 m_Text: Time ms
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Time ms\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1319,7 +1319,7 @@ MonoBehaviour:
                 m_Text: Self ms
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-                m_TextWithWhitespace: 
+                m_TextWithWhitespace: "Self ms\u200B"
               contextMenuText: 
               headerTextAlignment: 0
               sortingArrowAlignment: 2
@@ -1472,7 +1472,7 @@ MonoBehaviour:
 
                       (Press
                       ''F'' for frame selection)'
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Called From\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1488,7 +1488,7 @@ MonoBehaviour:
                     m_Text: Calls
                     m_Image: {fileID: 0}
                     m_Tooltip: Total number of calls in a selected frame
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Calls\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1504,7 +1504,7 @@ MonoBehaviour:
                     m_Text: GC Alloc
                     m_Image: {fileID: 0}
                     m_Tooltip: 
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "GC Alloc\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1520,7 +1520,7 @@ MonoBehaviour:
                     m_Text: Time ms
                     m_Image: {fileID: 0}
                     m_Tooltip: Total time the selected function spends within a parent
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time ms\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1537,7 +1537,7 @@ MonoBehaviour:
                     m_Image: {fileID: 0}
                     m_Tooltip: Shows how often the selected function was called from
                       the parent call
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time %\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1585,7 +1585,7 @@ MonoBehaviour:
 
                       (Press
                       ''F'' for frame selection)'
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Called From\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1601,7 +1601,7 @@ MonoBehaviour:
                     m_Text: Calls
                     m_Image: {fileID: 0}
                     m_Tooltip: Total number of calls in a selected frame
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Calls\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1617,7 +1617,7 @@ MonoBehaviour:
                     m_Text: GC Alloc
                     m_Image: {fileID: 0}
                     m_Tooltip: 
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "GC Alloc\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1633,7 +1633,7 @@ MonoBehaviour:
                     m_Text: Time ms
                     m_Image: {fileID: 0}
                     m_Tooltip: Total time the selected function spends within a parent
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time ms\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1650,7 +1650,7 @@ MonoBehaviour:
                     m_Image: {fileID: 0}
                     m_Tooltip: Shows how often the selected function was called from
                       the parent call
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time %\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1896,7 +1896,7 @@ MonoBehaviour:
 
                       (Press
                       ''F'' for frame selection)'
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Called From\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1912,7 +1912,7 @@ MonoBehaviour:
                     m_Text: Calls
                     m_Image: {fileID: 0}
                     m_Tooltip: Total number of calls in a selected frame
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Calls\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1928,7 +1928,7 @@ MonoBehaviour:
                     m_Text: GC Alloc
                     m_Image: {fileID: 0}
                     m_Tooltip: 
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "GC Alloc\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1944,7 +1944,7 @@ MonoBehaviour:
                     m_Text: Time ms
                     m_Image: {fileID: 0}
                     m_Tooltip: Total time the selected function spends within a parent
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time ms\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1961,7 +1961,7 @@ MonoBehaviour:
                     m_Image: {fileID: 0}
                     m_Tooltip: Shows how often the selected function was called from
                       the parent call
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time %\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2009,7 +2009,7 @@ MonoBehaviour:
 
                       (Press
                       ''F'' for frame selection)'
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Called From\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2025,7 +2025,7 @@ MonoBehaviour:
                     m_Text: Calls
                     m_Image: {fileID: 0}
                     m_Tooltip: Total number of calls in a selected frame
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Calls\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2041,7 +2041,7 @@ MonoBehaviour:
                     m_Text: GC Alloc
                     m_Image: {fileID: 0}
                     m_Tooltip: 
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "GC Alloc\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2057,7 +2057,7 @@ MonoBehaviour:
                     m_Text: Time ms
                     m_Image: {fileID: 0}
                     m_Tooltip: Total time the selected function spends within a parent
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time ms\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2074,7 +2074,7 @@ MonoBehaviour:
                     m_Image: {fileID: 0}
                     m_Tooltip: Shows how often the selected function was called from
                       the parent call
-                    m_TextWithWhitespace: 
+                    m_TextWithWhitespace: "Time %\u200B"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -2239,7 +2239,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b2b4ffff5aecffff20fbffff
+      m_ExpandedIDs: d05bfeffe85bfeff205efeff3e5efeff2458ffffb058ffff3c59ffffc259ffff7c5dffff32e90000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2310,8 +2310,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scenes
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2329,7 +2328,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 2.6928077}
     m_SelectedIDs: c6800000
     m_LastClickedID: 32966
-    m_ExpandedIDs: 00000000cca40000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2358,7 +2357,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000cca40000d0a60000f0a60000
+    m_ExpandedIDs: ffffffff00000000f0d700001cd800001ed80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Dots
@@ -2369,7 +2368,7 @@ MonoBehaviour:
         y: 0
         width: 0
         height: 0
-      m_UserData: 44212
+      m_UserData: 55332
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -2459,7 +2458,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 162
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
