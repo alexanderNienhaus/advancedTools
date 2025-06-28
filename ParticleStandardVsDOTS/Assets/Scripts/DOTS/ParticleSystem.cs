@@ -4,13 +4,13 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Transforms;
 
-//[BurstCompile]
+[BurstCompile]
 public partial struct PaticleSystem : ISystem
 {
     private EntityQuery query;
     private ComponentLookup<Particle> allParticles;
 
-    //[BurstCompile]
+    [BurstCompile]
     public void OnCreate(ref SystemState pSystemState)
     {
         pSystemState.RequireForUpdate<ParticleSettings>();
@@ -23,7 +23,7 @@ public partial struct PaticleSystem : ISystem
         allParticles = pSystemState.GetComponentLookup<Particle>();
     }
 
-    //[BurstCompile]
+    [BurstCompile]
     public void OnUpdate(ref SystemState pSystemState)
     {
         allParticles.Update(ref pSystemState);
@@ -39,7 +39,7 @@ public partial struct PaticleSystem : ISystem
             if (particle.currentLifetime >= particle.maxLifetime)
             {
                 //pSystemState.EntityManager.DestroyEntity(particleEntity);
-                pSystemState.World.GetExistingSystemManaged<EventBridge>().PublishOnNumberOfParticlesChanged(-1);
+                //pSystemState.World.GetExistingSystemManaged<DOTSBridge>().PublishOnNumberOfParticlesChanged(-1);
                 ecb.DestroyEntity(particleEntity);
                 continue;
             }

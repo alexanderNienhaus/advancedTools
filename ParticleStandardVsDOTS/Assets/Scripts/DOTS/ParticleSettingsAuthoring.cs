@@ -13,10 +13,12 @@ public class ParticleSettingsAuthoring : MonoBehaviour
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new ParticleSettings
             {
-                active = true,
+                active = false,
                 activeTime = 0,
                 prefab = GetEntity(pAuthoring.particleSettingsSO.prefab, TransformUsageFlags.Dynamic),
                 duration = pAuthoring.particleSettingsSO.duration,
+                startDelay = pAuthoring.particleSettingsSO.startDelay,
+                currentDelay = 0,
                 maxLifetime = pAuthoring.particleSettingsSO.maxLifetime,
                 startSpeed = pAuthoring.particleSettingsSO.startSpeed,
                 currentParticles = 0,
@@ -38,6 +40,8 @@ public struct ParticleSettings : IComponentData
     public float activeTime;
     public Entity prefab;
     public float duration;
+    public float startDelay;
+    public float currentDelay;
     public float maxLifetime;
     public float startSpeed;
     public int currentParticles;

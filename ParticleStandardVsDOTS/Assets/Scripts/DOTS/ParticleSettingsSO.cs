@@ -6,6 +6,7 @@ public class ParticleSettingsSO : ScriptableObject
 {
     [Header("Particle System")]
     public GameObject prefab;
+    public float startDelay;
     public float duration;
     public float maxLifetime;
     public float startSpeed;

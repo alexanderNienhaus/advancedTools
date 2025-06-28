@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ParticleSettings1
   m_EditorClassIdentifier: 
   prefab: {fileID: 1597908038120187572, guid: 9b2e8377e40628f429e9355b3a1a11c0, type: 3}
-  duration: 10
-  maxLifetime: 10
+  startDelay: 5
+  duration: 240
+  maxLifetime: 240
   startSpeed: 5
   maxParticles: 1000000
   randomSeed: 0
-  rateOverTime: 100
-  angle: 45
+  rateOverTime: 500
   radius: 20
