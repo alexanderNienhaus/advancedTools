@@ -47,4 +47,5 @@ public struct ParticleSettings : IComponentData
     public float rateOverTimeRoundRest;
     //public float angle;
     public float radius;
+    public int spawnThisFrame;
 }

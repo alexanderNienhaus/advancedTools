@@ -62,14 +62,18 @@ public partial struct PaticleSpawningSystem : ISystem
             }
             allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.activeTime += SystemAPI.Time.DeltaTime;
 
-            float rate = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.rateOverTime * SystemAPI.Time.DeltaTime;
-            float amountToSpawnExact = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.rateOverTimeRoundRest + rate;
-            int amountToSpawn = (int)math.floor(amountToSpawnExact);
-            if (amountToSpawn > (int)math.floor(rate)) allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest--;
-            allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest += amountToSpawnExact - amountToSpawn;
+            //float rate = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.rateOverTime * SystemAPI.Time.DeltaTime;
+            //float amountToSpawnExact = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.rateOverTimeRoundRest + rate;
+            //int amountToSpawn = (int)math.floor(amountToSpawnExact);
+            //if (amountToSpawn > (int)math.floor(rate)) allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest--;
+            //allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest += amountToSpawnExact - amountToSpawn;
+            //amountToSpawn = (int)math.ceil(rate);
 
-            if(amountToSpawn >= 1)
+            int amountToSpawn = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.spawnThisFrame;
+
+            if (amountToSpawn >= 1)
             {
+                pSystemState.World.GetExistingSystemManaged<EventBridge>().PublishOnNumberOfParticlesChanged(amountToSpawn);
                 NativeArray<Entity> instiatedEntities = pSystemState.EntityManager.Instantiate(allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.prefab, amountToSpawn, Allocator.Temp);
                 allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.currentParticles += amountToSpawn;
 
@@ -111,7 +115,7 @@ public partial struct PaticleSpawningSystem : ISystem
                         }
                     );
                 }
-
+                allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.spawnThisFrame = 0;
                 instiatedEntities.Dispose();
             }            
         }

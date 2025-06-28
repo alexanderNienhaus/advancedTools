@@ -39,6 +39,7 @@ public partial struct PaticleSystem : ISystem
             if (particle.currentLifetime >= particle.maxLifetime)
             {
                 //pSystemState.EntityManager.DestroyEntity(particleEntity);
+                pSystemState.World.GetExistingSystemManaged<EventBridge>().PublishOnNumberOfParticlesChanged(-1);
                 ecb.DestroyEntity(particleEntity);
                 continue;
             }
