@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1597908038120187572, guid: 9b2e8377e40628f429e9355b3a1a11c0, type: 3}
   startDelay: 5
-  duration: 240
-  maxLifetime: 240
+  duration: 60
+  maxLifetime: 60
   startSpeed: 5
   maxParticles: 1000000
   randomSeed: 0
-  rateOverTime: 500
+  rateOverTime: 2000
   radius: 20

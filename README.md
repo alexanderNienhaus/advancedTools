@@ -15,7 +15,7 @@ Implement particle effects using Unitys default particle system component versus
 
 ## Brief Description
 
-Particle effects are used in many video games to add "juice" to the game, increasing the visual fidelity of the game. Even if the gameplay would stay the same without particles for most of their use cases, they still improve the enjoyment of a game dramatically by making the visuals much more entertaining.
+Particle effects are used in many video games to add "juice" to the game, increasing the visual fidelity. Even if the gameplay would stay the same without particles for most of their use cases, they still improve the enjoyment of a game dramatically by making the visuals much more entertaining.
 
 Particles are just a number of objects that get different, often random, values assigned. For this demo I will limit this to:
 - Emission rate per second
@@ -26,7 +26,25 @@ Particles are just a number of objects that get different, often random, values 
 
 The amount of particles and their behavior influence the performance of the game.
 
-This prototype is based on multiple tutorials: Getting started with Unity DOTS! (ECS, Job System, Burst, Hybrid Game Objects) (https://unitycodemonkey.com/video.php?v=4ZYn9sR3btg) by CodeMonkey(https://unitycodemonkey.com/index.php), Unity Made Easy - Creating Text Files (https://www.youtube.com/watch?v=6bVcLSZWqK8) by Fire Brain Games (Creagines) (https://www.youtube.com/@firebraingames), Learn EVERYTHING About Particles in Unity | Easy Tutorial (https://www.youtube.com/watch?v=0HKSvT2gcuk&t=381s) by Sasquatch B Studios (https://www.youtube.com/@sasquatchbgames).
+This prototype is based on multiple tutorials: 
+<a href="https://unitycodemonkey.com/video.php?v=4ZYn9sR3btg">
+  Getting started with Unity DOTS! (ECS, Job System, Burst, Hybrid Game Objects)
+</a> by
+<a href="https://unitycodemonkey.com/index.php">
+  CodeMonkey
+</a>
+<a href="https://www.youtube.com/watch?v=6bVcLSZWqK8">
+  Unity Made Easy - Creating Text Files
+</a> by
+<a href="https://www.youtube.com/@firebraingames">
+ Fire Brain Games (Creagines)
+</a>
+<a href="https://www.youtube.com/watch?v=0HKSvT2gcuk&t=381s">
+  Learn EVERYTHING About Particles in Unity | Easy Tutorial
+</a> by
+<a href="https://www.youtube.com/@sasquatchbgames">
+  Sasquatch B Studios
+</a>
 
 ## Relevance
 
@@ -38,7 +56,7 @@ Test
   <img src="/Chart1.png" width="2879">
 </p>
 
-Test
+
 
 ## Comparing Number of Velocity Changes with 10.000 particles
 

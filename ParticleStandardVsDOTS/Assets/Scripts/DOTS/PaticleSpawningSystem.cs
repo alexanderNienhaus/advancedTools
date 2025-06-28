@@ -101,8 +101,14 @@ public partial struct PaticleSpawningSystem : ISystem
                     );
 
                     float2 randomDirectionUnit = r.NextFloat2Direction();
-                    float randomRadiusBot = r.NextFloat(0, allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.radius);
-                    float2 randomBotVector = randomDirectionUnit * randomRadiusBot;
+                    float radius = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.radius;
+                    //float randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
+                    //float randomRadiusBot = r.NextFloat(0, radius) + r.NextFloat(0, radius);
+                    //if (randomRadiusBot > radius)
+                    //{
+                    //    randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
+                    //}
+                    float2 randomBotVector = randomDirectionUnit * r.NextFloat(0, radius);
                     float3 randomBotPoint = localTransformParticleSettings.Position + new float3(randomBotVector.x, 0, randomBotVector.y);
                     float3 direction = new(0, 1, 0);
 

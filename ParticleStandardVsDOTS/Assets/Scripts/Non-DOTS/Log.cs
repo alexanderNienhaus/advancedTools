@@ -14,7 +14,8 @@ public class Log : MonoBehaviour
     [SerializeField] private float interval = 0.5f;
     [SerializeField] private bool doLog = false;
 
-    private float count = 0;
+    private float fps = 0;
+    private float deltaTime = 0;
     private float duration = 0;
     private float numberOfParticlesDOTS = 0;
     private float numberOfParticlesStandard = 0;
@@ -25,8 +26,10 @@ public class Log : MonoBehaviour
         pathFilename = Application.dataPath + @"\TestResults\" + SceneManager.GetActiveScene().name + "_" + DateTime.Now.ToString("yyyy-dd-M_HH-mm-ss") + ".txt";
         while (true)
         {
-            count = Mathf.Round(1f / Time.unscaledDeltaTime);
-            textFieldFps.SetText("FPS: " + count);
+            fps = Mathf.Round(1f / Time.unscaledDeltaTime);
+            deltaTime = Time.unscaledDeltaTime;
+
+            textFieldFps.SetText("FPS: " + fps);
             if(doLog) SaveLogToTxt();
 
             duration += interval;
@@ -42,10 +45,10 @@ public class Log : MonoBehaviour
     {
         if (!File.Exists(pathFilename))
         {
-            File.WriteAllText(pathFilename, "Start Log - Format: duration;count;numberOfParticlesDOTS;numberOfParticlesStandard\n");
+            File.WriteAllText(pathFilename, "Number of Particles (DOTS);Number of Particles (Standard);FPS\n");
         }
         
-        string content = duration + ";" + count + ";" + numberOfParticlesDOTS + ";" + numberOfParticlesStandard + "\n";
+        string content = numberOfParticlesDOTS + ";" + numberOfParticlesStandard + ";" + deltaTime + "\n";
         File.AppendAllText(pathFilename, content);
     }
 
