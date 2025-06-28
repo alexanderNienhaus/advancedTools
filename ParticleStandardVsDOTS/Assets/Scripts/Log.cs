@@ -6,7 +6,7 @@ using System.Text;
 using System;
 using UnityEngine.SceneManagement;
 
-public class FPSLog : MonoBehaviour
+public class Log : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textField;
     [SerializeField] private float interval = 0.5f;
