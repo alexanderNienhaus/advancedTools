@@ -1,7 +1,6 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
@@ -12,7 +11,6 @@ public partial struct PaticleSpawningSystem : ISystem
     private EntityQuery query;
     private ComponentLookup<ParticleSettings> allParticleSettings;
     private ComponentLookup<LocalTransform> allLocalTransforms;
-    private Random r;
 
     [BurstCompile]
     public void OnCreate(ref SystemState pSystemState)
@@ -26,8 +24,6 @@ public partial struct PaticleSpawningSystem : ISystem
 
         allParticleSettings = pSystemState.GetComponentLookup<ParticleSettings>();
         allLocalTransforms = pSystemState.GetComponentLookup<LocalTransform>(true);
-
-        r = new (1);
     }
 
     [BurstCompile]
@@ -47,13 +43,11 @@ public partial struct PaticleSpawningSystem : ISystem
         allLocalTransforms.Update(ref pSystemState);
         NativeArray<Entity> allParticleSettingEntities = query.ToEntityArray(Allocator.Temp);
 
-        //NativeArray<ParticleSettings> allParticleSettings = query.ToComponentDataArray<ParticleSettings>(Allocator.Temp);
-        //NativeArray<LocalTransform> allLocalTransforms = query.ToComponentDataArray<LocalTransform>(Allocator.Temp);
         for (int i = 0; i < allParticleSettingEntities.Length; i++)
         {
             Entity particleSettingsEntity = allParticleSettingEntities[i];
             if (allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.currentDelay < allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.startDelay - allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.currentDelay)
-            {
+            {   
                 allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.currentDelay += SystemAPI.Time.DeltaTime;
             } else
             {
@@ -76,17 +70,18 @@ public partial struct PaticleSpawningSystem : ISystem
             if (amountToSpawn > (int)math.floor(rate)) allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest--;
             allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.rateOverTimeRoundRest += amountToSpawnExact - amountToSpawn;
             amountToSpawn = (int)math.ceil(rate);
-
-            //int amountToSpawn = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.spawnThisFrame;
+            if (allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.burst > 0)
+            {
+                amountToSpawn += allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.burst;
+                allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.burst = 0;
+            }
 
             if (amountToSpawn >= 1)
             {
-                //pSystemState.World.GetExistingSystemManaged<EventBridge>().PublishOnNumberOfParticlesChanged(amountToSpawn);
                 NativeArray<Entity> instiatedEntities = pSystemState.EntityManager.Instantiate(allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.prefab, amountToSpawn, Allocator.Temp);
                 allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.currentParticles += amountToSpawn;
 
                 LocalTransform localTransformParticleSettings = allLocalTransforms[particleSettingsEntity];
-                //uint randomSeed = particleSettings.randomSeed;
 
                 for (int j = 0; j < amountToSpawn; j++)
                 {
@@ -100,15 +95,9 @@ public partial struct PaticleSpawningSystem : ISystem
                         }
                     );
 
-                    float2 randomDirectionUnit = r.NextFloat2Direction();
+                    float2 randomDirectionUnit = allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.random.NextFloat2Direction();
                     float radius = allParticleSettings.GetRefRO(particleSettingsEntity).ValueRO.radius;
-                    //float randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
-                    //float randomRadiusBot = r.NextFloat(0, radius) + r.NextFloat(0, radius);
-                    //if (randomRadiusBot > radius)
-                    //{
-                    //    randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
-                    //}
-                    float2 randomBotVector = randomDirectionUnit * r.NextFloat(0, radius);
+                    float2 randomBotVector = randomDirectionUnit * allParticleSettings.GetRefRW(particleSettingsEntity).ValueRW.random.NextFloat(0, radius);
                     float3 randomBotPoint = localTransformParticleSettings.Position + new float3(randomBotVector.x, 0, randomBotVector.y);
                     float3 direction = new(0, 1, 0);
 
@@ -133,13 +122,22 @@ public partial struct PaticleSpawningSystem : ISystem
                 instiatedEntities.Dispose();
             }            
         }
-        //allParticleSettings.Dispose();
-        //allLocalTransforms.Dispose();
         allParticleSettingEntities.Dispose();
     }
 }
 
 
+
+
+
+
+
+//float randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
+//float randomRadiusBot = r.NextFloat(0, radius) + r.NextFloat(0, radius);
+//if (randomRadiusBot > radius)
+//{
+//    randomRadiusBot = radius - (r.NextFloat(0, radius) + r.NextFloat(0, radius) - radius);
+//}
 
 //float3 randomDirectionUnit3D = new (randomDirectionUnit.x, 0, randomDirectionUnit.y);
 

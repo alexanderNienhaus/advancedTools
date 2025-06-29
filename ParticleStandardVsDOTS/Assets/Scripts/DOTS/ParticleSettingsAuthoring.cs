@@ -23,10 +23,10 @@ public class ParticleSettingsAuthoring : MonoBehaviour
                 startSpeed = pAuthoring.particleSettingsSO.startSpeed,
                 currentParticles = 0,
                 maxParticles = pAuthoring.particleSettingsSO.maxParticles,
-                randomSeed = pAuthoring.particleSettingsSO.randomSeed,
+                random = new Unity.Mathematics.Random(pAuthoring.particleSettingsSO.randomSeed),
                 rateOverTime = pAuthoring.particleSettingsSO.rateOverTime,
                 rateOverTimeRoundRest = 0,
-                //angle = pAuthoring.particleSettingsSO.angle,
+                burst = pAuthoring.particleSettingsSO.burst,
                 radius = pAuthoring.particleSettingsSO.radius,
             });
         }
@@ -46,10 +46,10 @@ public struct ParticleSettings : IComponentData
     public float startSpeed;
     public int currentParticles;
     public int maxParticles;
-    public uint randomSeed; //todo
+    public Unity.Mathematics.Random random;
     public int rateOverTime;
     public float rateOverTimeRoundRest;
-    //public float angle;
+    public int burst;
     public float radius;
     public int spawnThisFrame;
 }

@@ -15,8 +15,8 @@ public class ParticleSettingsSO : ScriptableObject
 
     [Header("Emission")]
     public int rateOverTime;
+    public int burst;
 
     [Header("Shape")]
-    //[Range(0, 90)] public float angle;
     public float radius;
 }

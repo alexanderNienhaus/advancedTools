@@ -1,8 +1,6 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Transforms;
 
 [BurstCompile]
 public partial struct PaticleSystem : ISystem
@@ -33,13 +31,10 @@ public partial struct PaticleSystem : ISystem
         for (int i = 0; i < allParticlesEntities.Length; i++)
         {
             Entity particleEntity = allParticlesEntities[i];
-            //if (!pSystemState.EntityManager.Exists(particleEntity) || allParticles.EntityExists(particleEntity)) continue;
 
             Particle particle = allParticles[particleEntity];
             if (particle.currentLifetime >= particle.maxLifetime)
             {
-                //pSystemState.EntityManager.DestroyEntity(particleEntity);
-                //pSystemState.World.GetExistingSystemManaged<DOTSBridge>().PublishOnNumberOfParticlesChanged(-1);
                 ecb.DestroyEntity(particleEntity);
                 continue;
             }

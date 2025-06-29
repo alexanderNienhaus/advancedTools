@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using System.IO;
-using System.Text;
 using System;
 using UnityEngine.SceneManagement;
 
@@ -15,19 +14,24 @@ public class Log : MonoBehaviour
     [SerializeField] private bool doLog = false;
 
     private float fps = 0;
-    private float deltaTime = 0;
     private float duration = 0;
     private float numberOfParticlesDOTS = 0;
     private float numberOfParticlesStandard = 0;
     private string pathFilename;
+
+    private int iterations = 0;
+    private int cumulativeFps = 0;
 
     private IEnumerator Start()
     {
         pathFilename = Application.dataPath + @"\TestResults\" + SceneManager.GetActiveScene().name + "_" + DateTime.Now.ToString("yyyy-dd-M_HH-mm-ss") + ".txt";
         while (true)
         {
-            fps = Mathf.Round(1f / Time.unscaledDeltaTime);
-            deltaTime = Time.unscaledDeltaTime;
+            yield return new WaitForSeconds(interval);
+
+            fps = cumulativeFps / iterations;
+            iterations = 0;
+            cumulativeFps = 0;
 
             textFieldFps.SetText("FPS: " + fps);
             if(doLog) SaveLogToTxt();
@@ -36,19 +40,23 @@ public class Log : MonoBehaviour
 
             textFieldParticlesDOTS.SetText("# DOTS: " + numberOfParticlesDOTS);
             textFieldParticlesStandard.SetText("# Standard: " + numberOfParticlesStandard);
-
-            yield return new WaitForSeconds(interval);
         }
+    }
+
+    private void Update()
+    {
+        iterations++;
+        cumulativeFps += (int)Mathf.Round(1f / Time.unscaledDeltaTime);
     }
 
     private void SaveLogToTxt()
     {
         if (!File.Exists(pathFilename))
         {
-            File.WriteAllText(pathFilename, "Number of Particles (DOTS);Number of Particles (Standard);FPS\n");
+            File.WriteAllText(pathFilename, "Time;Number of Particles (DOTS);Number of Particles (Standard);FPS\n");
         }
-        
-        string content = numberOfParticlesDOTS + ";" + numberOfParticlesStandard + ";" + deltaTime + "\n";
+
+        string content = duration + ";" + numberOfParticlesDOTS + ";" + numberOfParticlesStandard + ";" + fps + "\n";
         File.AppendAllText(pathFilename, content);
     }
 

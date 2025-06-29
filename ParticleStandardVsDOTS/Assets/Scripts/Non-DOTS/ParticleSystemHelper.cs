@@ -11,7 +11,6 @@ public class ParticleSystemHelper : MonoBehaviour
         particleSystem = GetComponent<ParticleSystem>();
         if (particleSystem == null) throw new Exception("Missing Component: ParticleSystem");
         particleCount = 0;
-        //EventBus<OnNumberOfParticlesChangedStandard>.Publish(new OnNumberOfParticlesChangedStandard((int)Mathf.Round(particleSystem.emission.rateOverTime.constant * Time.deltaTime)));
     }
 
     void Update()

@@ -7,7 +7,6 @@ public partial class DOTSBridge : SystemBase
 
     protected override void OnCreate()
     {
-        RequireForUpdate<Particle>();
         particleCount = 0;
     }
 
