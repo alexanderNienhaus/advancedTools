@@ -31,7 +31,7 @@ Particle effects are widely used in modern video games as a way to increase visu
 
 - Aho, J. (2018). REWARDING PLAYERS WITH AUDIOVISUAL CUES. 
 - Buse, K. (2021). Genesis Effects: Growing Planets in 1980s Computer Graphics. Johns Hopkins University Press.
-- Lee, S. (2025). www.numberanalytics.com. Retrieved from Mastering Particle Systems in Game Animation: https://www.numberanalytics.com/blog/   mastering-particle-systems-in-game-animation#:~:text=History%20and%20Evolution%20of%20Particle,dynamics%2C%20and%20soft%20body%20simulations.
+- Lee, S. (2025). www.numberanalytics.com. Retrieved from Mastering Particle Systems in Game Animation: https://www.numberanalytics.com/blog/mastering-particle-systems-in-game-animation#:~:text=History%20and%20Evolution%20of%20Particle,dynamics%2C%20and%20soft%20body%20simulations.
 - Nerima, W. C. (2024). Video Game Special Effects Simulation Based on Particle System of Unity. 
 
 
